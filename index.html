@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孕期步数激励计划 - 安全第一，健康相伴</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f7fe;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: linear-gradient(to bottom, #f0f7ff 0%, #f9f7fe 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #8a6de9 0%, #5c4bc4 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(92, 75, 196, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            color: #5c4bc4;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 12px;
+            font-size: 1.6rem;
+        }
+        
+        .safety-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        
+        .warning-box {
+            background: #fff3f3;
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+        
+        .warning-title {
+            color: #d32f2f;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .calculator {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            transition: border 0.3s;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #5c4bc4;
+            outline: none;
+        }
+        
+        .checkbox-group {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #5c4bc4 0%, #8a6de9 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(92, 75, 196, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .result-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            border: 2px dashed #ddd;
+            transition: all 0.3s;
+        }
+        
+        .result-box.active {
+            border-color: #5c4bc4;
+            background: #f9f7ff;
+        }
+        
+        .result-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #5c4bc4;
+            margin: 15px 0;
+        }
+        
+        .result-text {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .result-detail {
+            color: #777;
+            font-size: 1rem;
+        }
+        
+        .penalty-notice {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .reward-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .reward-table th, .reward-table td {
+            padding: 18px 15px;
+            text-align: center;
+        }
+        
+        .reward-table thead {
+            background: linear-gradient(135deg, #8a6de9 0%, #5c4bc4 100%);
+            color: white;
+        }
+        
+        .reward-table tbody tr:nth-child(even) {
+            background-color: #f9f9ff;
+        }
+        
+        .reward-table tbody tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        .step-range {
+            font-weight: 600;
+            color: #5c4bc4;
+        }
+        
+        .reward-amount {
+            font-weight: 700;
+            color: #4CAF50;
+        }
+        
+        .highlight-row {
+            background-color: #e8f5e9 !important;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .expert-tip {
+            background: #e8f4ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            position: relative;
+            border-left: 5px solid #2196F3;
+        }
+        
+        .expert-tip i {
+            color: #2196F3;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .expert-tip-content {
+            margin-left: 40px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 30px;
+        }
+        
+        .heart {
+            color: #ff6b6b;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.1); }
+            10% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reward-table th, .reward-table td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> 孕期步数激励计划</h1>
+            <p class="subtitle">安全第一，健康相伴 · 分段式步数激励，科学预防血栓，让孕期更轻松</p>
+        </header>
+        
+        <div class="card">
+            <div class="safety-badge"><i class="fas fa-exclamation-triangle"></i> 核心原则：安全第一，拿钱第二</div>
+            <h2 class="card-title"><i class="fas fa-shield-alt"></i> 安全注意事项</h2>
+            <p>针对帆状胎盘的特殊情况，运动安全是首要考虑因素。请务必遵守以下原则：</p>
+            
+            <div class="warning-box">
+                <div class="warning-title"><i class="fas fa-exclamation-circle"></i> 终止信号（立即停止并就医）</div>
+                <p>任何腹痛、阴道出血、胎动异常、头晕或宫缩情况出现时，请立即停止运动并就医。当天的计划自动视为"满分完成"！</p>
+            </div>
+            
+            <div class="grid">
+                <div>
+                    <h3><i class="fas fa-walking"></i> 运动方式</h3>
+                    <p>• 跑步机最慢档（散步模式）<br>• 必须有人陪同或确保安全锁夹在衣服上<br>• 保持水分充足，环境通风</p>
+                </div>
+                
+                <div>
+                    <h3><i class="fas fa-clock"></i> 执行策略</h3>
+                    <p>• "分期付款"式走路，分多次完成<br>• 注重频率而非单次时长<br>• 每次15-20分钟，每日3-4次</p>
+                </div>
+                
+                <div>
+                    <h3><i class="fas fa-baby"></i> 特殊注意事项</h3>
+                    <p>• 帆状胎盘需格外注意运动强度<br>• 8000步为"最佳舒适区"<br>• 避免冲击10000步，防止宫缩风险</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card calculator">
+            <h2 class="card-title"><i class="fas fa-calculator"></i> 步数奖励计算器</h2>
+            <p>输入您今天的步数，系统将自动计算奖励金额。如有身体不适，请勾选下方选项。</p>
+            
+            <div class="input-group">
+                <label for="steps">今日步数（步）</label>
+                <input type="number" id="steps" min="0" max="20000" value="0" placeholder="请输入今日步数">
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="discomfort">
+                <label for="discomfort">今天有身体不适（腹痛、出血、胎动异常等）</label>
+            </div>
+            
+            <button class="btn" id="calculate-btn">
+                <i class="fas fa-calculator"></i> 计算今日奖励
+            </button>
+            
+            <div class="result-box" id="result-box">
+                <p class="result-text">今日奖励金额</p>
+                <div class="result-amount" id="result-amount">0 元</div>
+                <p class="result-detail" id="result-detail">请输入步数并点击计算按钮</p>
+                <div id="penalty-notice" class="penalty-notice"></div>
+            </div>
+            
+            <div class="expert-tip">
+                <i class="fas fa-stethoscope"></i>
+                <div class="expert-tip-content">
+                    <h3>专家建议</h3>
+                    <p>鉴于帆状胎盘，强烈建议将8000步设为"最佳舒适区"，不要过度诱导冲刺10000步，以免引发宫缩或意外。奖励机制旨在鼓励规律活动，而非追求极限。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-trophy"></i> 分段式奖惩机制</h2>
+            
+            <table class="reward-table">
+                <thead>
+                    <tr>
+                        <th>步数区间</th>
+                        <th>完成状态</th>
+                        <th>奖励金额 (人民币)</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="step-range">0 - 3,999步</td>
+                        <td>未达标</td>
+                        <td class="reward-amount">0 元</td>
+                        <td>需要加油了，血栓风险在增加</td>
+                    </tr>
+                    <tr>
+                        <td class="step-range">4,000 - 5,999步</td>
+                        <td>努力奖</td>
+                        <td class="reward-amount">20 元</td>
+                        <td>虽然没达标，但有动起来，给个辛苦费</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td class="step-range">6,000步</td>
+                        <td><strong>达标基准线</strong></td>
+                        <td class="reward-amount"><strong>50 元</strong></td>
+                        <td><strong>核心目标达成！</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="step-range">6,000 - 7,999步</td>
+                        <td>进阶奖</td>
+                        <td class="reward-amount">50元 + 额外每100步1元</td>
+                        <td>例如走7000步，给60元</td>
+                    </tr>
+                    <tr>
+                        <td class="step-range">8,000 - 9,999步</td>
+                        <td>优秀奖</td>
+                        <td class="reward-amount">80 元</td>
+                        <td>走到8000步直接一口价80元</td>
+                    </tr>
+                    <tr>
+                        <td class="step-range">10,000步</td>
+                        <td>封顶大奖</td>
+                        <td class="reward-amount">100 元</td>
+                        <td>强制封顶，不建议冲刺此目标</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="expert-tip">
+                <i class="fas fa-brain"></i>
+                <div class="expert-tip-content">
+                    <h3>惩罚机制心理学原理</h3>
+                    <p>如果当天无身体不适但步数低于4000步，需要向"宝宝出生储备金"转账20元。这钱没丢，是给孩子的，她不会太心疼，但会有"我要把这钱赚回来"的动力，形成正向激励循环。</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>本计划专为孕期健康设计，特别考虑帆状胎盘情况。所有运动前请咨询医生。</p>
+            <p>祝您和宝宝健康平安 <span class="heart">❤</span></p>
+            <p>© 2023 孕期健康激励计划</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepsInput = document.getElementById('steps');
+            const discomfortCheckbox = document.getElementById('discomfort');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resultBox = document.getElementById('result-box');
+            const resultAmount = document.getElementById('result-amount');
+            const resultDetail = document.getElementById('result-detail');
+            const penaltyNotice = document.getElementById('penalty-notice');
+            
+            // 奖励计算函数
+            function calculateReward(steps) {
+                let reward = 0;
+                let detail = "";
+                let penaltyText = "";
+                
+                // 如果勾选了身体不适
+                if (discomfortCheckbox.checked) {
+                    reward = 50; // 视为满分完成
+                    detail = "因身体不适，今日计划自动视为'满分完成'！安全第一，请务必休息并遵循医生建议。";
+                    penaltyText = "";
+                    return {reward, detail, penaltyText};
+                }
+                
+                // 根据步数计算奖励
+                if (steps < 4000) {
+                    reward = 0;
+                    detail = "今日步数未达标。为了宝宝健康，请明天继续努力！";
+                    penaltyText = "请向'宝宝出生储备金'转账20元（无身体不适情况下）";
+                } else if (steps >= 4000 && steps < 6000) {
+                    reward = 20;
+                    detail = "获得努力奖！虽然没达到6000步目标，但有动起来就值得鼓励！";
+                    penaltyText = "";
+                } else if (steps === 6000) {
+                    reward = 50;
+                    detail = "恭喜！达成核心目标6000步，获得达标基准奖励！";
+                    penaltyText = "";
+                } else if (steps > 6000 && steps < 8000) {
+                    const extraSteps = steps - 6000;
+                    const extraReward = Math.floor(extraSteps / 100);
+                    reward = 50 + extraReward;
+                    detail = `达标6000步奖励50元 + ${extraSteps}步额外奖励${extraReward}元（每100步1元）`;
+                    penaltyText = "";
+                } else if (steps >= 8000 && steps < 10000) {
+                    reward = 80;
+                    detail = "优秀！达到8000步最佳舒适区，获得优秀奖！";
+                    penaltyText = "";
+                } else if (steps >= 10000) {
+                    reward = 100;
+                    detail = "封顶大奖！已达到10000步上限，请勿继续增加步数。";
+                    penaltyText = "";
+                }
+                
+                // 帆状胎盘特别提醒
+                if (steps > 8000) {
+                    detail += " 专家提醒：帆状胎盘建议以8000步为舒适区上限，请勿过度运动。";
+                }
+                
+                return {reward, detail, penaltyText};
+            }
+            
+            // 计算按钮点击事件
+            calculateBtn.addEventListener('click', function() {
+                const steps = parseInt(stepsInput.value) || 0;
+                
+                // 验证步数范围
+                if (steps < 0) {
+                    alert("步数不能为负数");
+                    return;
+                }
+                
+                if (steps > 20000) {
+                    alert("步数过高，请确认输入正确");
+                    return;
+                }
+                
+                // 计算结果
+                const result = calculateReward(steps);
+                
+                // 更新结果显示
+                resultAmount.textContent = result.reward + " 元";
+                resultDetail.textContent = result.detail;
+                
+                if (result.penaltyText) {
+                    penaltyNotice.textContent = result.penaltyText;
+                    penaltyNotice.style.display = "block";
+                } else {
+                    penaltyNotice.textContent = "";
+                    penaltyNotice.style.display = "none";
+                }
+                
+                // 激活结果框
+                resultBox.classList.add('active');
+                
+                // 根据奖励金额设置不同颜色
+                if (result.reward === 0) {
+                    resultAmount.style.color = "#ff6b6b";
+                } else if (result.reward < 50) {
+                    resultAmount.style.color = "#ff9800";
+                } else {
+                    resultAmount.style.color = "#5c4bc4";
+                }
+            });
+            
+            // 身体不适复选框变化事件
+            discomfortCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // 如果勾选了身体不适，将步数设置为0并禁用输入
+                    stepsInput.value = "0";
+                    stepsInput.disabled = true;
+                    stepsInput.style.backgroundColor = "#f5f5f5";
+                } else {
+                    // 取消勾选则恢复输入
+                    stepsInput.disabled = false;
+                    stepsInput.style.backgroundColor = "white";
+                }
+            });
+            
+            // 初始化：如果步数输入框为空，设置为0
+            if (!stepsInput.value) {
+                stepsInput.value = "0";
+            }
+        });
+    </script>
+</body>
+</html>
