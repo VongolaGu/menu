@@ -2,1006 +2,589 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>孕期步数激励计划</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奶香黄金芝麻小餐包 | 个人菜谱</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
         
         body {
-            background-color: #f9f7fe;
-            color: #333;
-            line-height: 1.5;
-            padding: 0;
-            background-image: linear-gradient(to bottom, #f0f7ff 0%, #f9f7fe 100%);
-            -webkit-tap-highlight-color: transparent;
+            background-color: #fef9f3;
+            color: #5c4d3c;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 15px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
         }
         
         header {
+            background: linear-gradient(135deg, #ffd8a6 0%, #ffb347 100%);
+            padding: 40px 30px;
             text-align: center;
-            padding: 20px 15px;
-            background: linear-gradient(135deg, #8a6de9 0%, #5c4bc4 100%);
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(92, 75, 196, 0.2);
+            color: #5c3a1a;
+            position: relative;
         }
         
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
         }
         
         .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: #7a5a3a;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 1rem;
-            opacity: 0.9;
-            max-width: 100%;
-            margin: 0 auto;
-            line-height: 1.4;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 15px;
+            border-radius: 50px;
         }
         
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .meta-item i {
+            color: #e67e22;
         }
         
-        .card:active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        .content {
+            padding: 40px;
         }
         
-        .card-title {
+        h2 {
+            color: #d35400;
+            border-bottom: 3px solid #ffd8a6;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #e67e22;
+            margin: 25px 0 15px;
             font-size: 1.4rem;
-            color: #5c4bc4;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
         }
         
-        .card-title i {
-            margin-right: 10px;
-            font-size: 1.3rem;
+        .section {
+            margin-bottom: 40px;
         }
         
-        .safety-badge {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            box-shadow: 0 3px 8px rgba(255, 107, 107, 0.3);
-            font-size: 0.9rem;
-        }
-        
-        .warning-box {
-            background: #fff3f3;
-            border-left: 4px solid #ff6b6b;
-            padding: 15px;
-            border-radius: 0 10px 10px 0;
-            margin: 15px 0;
-        }
-        
-        .warning-title {
-            color: #d32f2f;
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-        
-        .grid {
+        .ingredients-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
         
-        .calculator {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+        .ingredient-category {
+            background-color: #fff9f0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #ffb347;
         }
         
-        .input-mode-toggle {
+        .ingredient-list {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        
+        .ingredient-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ffd8a6;
             display: flex;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 2px solid #5c4bc4;
+            justify-content: space-between;
         }
         
-        .mode-btn {
-            flex: 1;
-            padding: 12px 5px;
-            text-align: center;
-            background: white;
-            color: #5c4bc4;
+        .ingredient-name {
+            font-weight: 500;
+        }
+        
+        .ingredient-amount {
+            color: #e67e22;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.95rem;
         }
         
-        .mode-btn.active {
-            background: #5c4bc4;
+        .steps {
+            counter-reset: step-counter;
+            margin-top: 20px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #f0e6d6;
+            align-items: flex-start;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            background-color: #ffb347;
             color: white;
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-        }
-        
-        .input-group.hidden {
-            display: none;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #555;
-            font-size: 0.95rem;
-        }
-        
-        input[type="number"] {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: border 0.3s;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        
-        input[type="number"]:focus {
-            border-color: #5c4bc4;
-            outline: none;
-        }
-        
-        .conversion-info {
-            display: block;
-            margin-top: 5px;
-            color: #888;
-            font-size: 0.85rem;
-        }
-        
-        .checkbox-group {
-            margin: 15px 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-        }
-        
-        .checkbox-group input {
-            width: 18px;
-            height: 18px;
-            margin-right: 8px;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 20px;
             flex-shrink: 0;
         }
         
-        .checkbox-group label {
-            margin-bottom: 0;
-            font-size: 0.95rem;
-            line-height: 1.4;
+        .step-content {
+            flex-grow: 1;
         }
         
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #5c4bc4 0%, #8a6de9 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
+        .step-title {
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            -webkit-tap-highlight-color: rgba(92, 75, 196, 0.3);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 12px rgba(92, 75, 196, 0.4);
-        }
-        
-        .quick-inputs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .quick-btn {
-            padding: 12px 8px;
-            background: #e8f0ff;
-            border: 2px solid #5c4bc4;
-            border-radius: 8px;
-            color: #5c4bc4;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            text-align: center;
-            -webkit-tap-highlight-color: rgba(92, 75, 196, 0.2);
-        }
-        
-        .quick-btn:active {
-            background: #5c4bc4;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .quick-btn small {
-            display: block;
-            font-weight: normal;
-            font-size: 0.8rem;
-            margin-top: 3px;
-            opacity: 0.8;
-        }
-        
-        .result-box {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 25px;
-            text-align: center;
-            border: 2px dashed #ddd;
-            transition: all 0.3s;
-        }
-        
-        .result-box.active {
-            border-color: #5c4bc4;
-            background: #f9f7ff;
-        }
-        
-        .result-amount {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #5c4bc4;
-            margin: 10px 0;
-            line-height: 1;
-        }
-        
-        .result-text {
-            font-size: 1.1rem;
-            color: #555;
             margin-bottom: 8px;
-        }
-        
-        .result-detail {
-            color: #777;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        
-        .penalty-notice {
-            color: #ff6b6b;
-            font-weight: 600;
-            margin-top: 12px;
-            font-size: 0.9rem;
-            padding: 8px;
-            background-color: #fff3f3;
-            border-radius: 6px;
-        }
-        
-        .reward-table-container {
-            overflow-x: auto;
-            margin-top: 15px;
-            border-radius: 10px;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .reward-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .reward-table th, .reward-table td {
-            padding: 14px 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .reward-table thead {
-            background: linear-gradient(135deg, #8a6de9 0%, #5c4bc4 100%);
-            color: white;
-        }
-        
-        .reward-table tbody tr:nth-child(even) {
-            background-color: #f9f9ff;
-        }
-        
-        .reward-table tbody tr:active {
-            background-color: #f0f4ff;
-        }
-        
-        .step-range {
-            font-weight: 600;
-            color: #5c4bc4;
-        }
-        
-        .reward-amount {
-            font-weight: 700;
-            color: #4CAF50;
-        }
-        
-        .highlight-row {
-            background-color: #e8f5e9 !important;
-            border-left: 4px solid #4CAF50;
-        }
-        
-        .expert-tip {
-            background: #e8f4ff;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            position: relative;
-            border-left: 4px solid #2196F3;
-        }
-        
-        .expert-tip i {
-            color: #2196F3;
+            color: #d35400;
             font-size: 1.2rem;
-            position: absolute;
-            top: 15px;
-            left: 15px;
         }
         
-        .expert-tip-content {
-            margin-left: 35px;
+        .step-details {
+            color: #5c4d3c;
         }
         
-        .expert-tip-content h3 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: #2196F3;
+        .step-image {
+            width: 200px;
+            height: 150px;
+            background-color: #f9f1e6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b8a086;
+            margin-left: 20px;
+            flex-shrink: 0;
+            border: 1px dashed #e6d5c1;
         }
         
-        .expert-tip-content p {
-            font-size: 0.9rem;
-            line-height: 1.4;
+        .step-image i {
+            font-size: 2.5rem;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background-color: #fff9f0;
+            padding: 20px;
+            border-radius: 12px;
+            border-top: 5px solid #ffb347;
+        }
+        
+        .tip-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #d35400;
+        }
+        
+        .tip-title i {
+            color: #e67e22;
+        }
+        
+        .baking-steps {
+            background-color: #fff5e6;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid #e67e22;
+        }
+        
+        .baking-step {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+        
+        .baking-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .time-highlight {
+            background-color: #ffb347;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 8px;
         }
         
         footer {
             text-align: center;
-            padding: 25px 0;
-            color: #777;
-            font-size: 0.85rem;
-            border-top: 1px solid #eee;
-            margin-top: 20px;
+            padding: 25px;
+            color: #b8a086;
+            font-size: 0.9rem;
+            border-top: 1px solid #f0e6d6;
+            margin-top: 30px;
         }
         
-        .heart {
-            color: #ff6b6b;
-            animation: heartbeat 1.5s infinite;
-        }
-        
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            5% { transform: scale(1.1); }
-            10% { transform: scale(1); }
-            15% { transform: scale(1.1); }
-            20% { transform: scale(1); }
-        }
-        
-        /* 针对非常小的手机屏幕 */
-        @media (max-width: 360px) {
-            .container {
-                padding: 12px;
-            }
-            
+        @media (max-width: 768px) {
             h1 {
-                font-size: 1.6rem;
+                font-size: 2.2rem;
             }
             
-            .card {
-                padding: 16px;
+            .content {
+                padding: 25px;
             }
             
-            .quick-inputs {
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-image {
+                width: 100%;
+                height: 180px;
+                margin: 15px 0 0 0;
+            }
+            
+            .ingredients-grid, .tips-grid {
                 grid-template-columns: 1fr;
             }
             
-            .result-amount {
-                font-size: 2.5rem;
+            .recipe-meta {
+                gap: 15px;
             }
         }
         
-        /* 针对平板或大屏手机 */
-        @media (min-width: 768px) {
-            .container {
-                max-width: 500px;
-                margin: 0 auto;
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
             }
             
-            .quick-inputs {
-                grid-template-columns: repeat(4, 1fr);
+            h1 {
+                font-size: 1.8rem;
             }
-        }
-        
-        /* 防止iOS输入框放大问题 */
-        @media (max-width: 768px) {
-            input, select, textarea {
-                font-size: 16px !important;
+            
+            .content {
+                padding: 20px;
             }
-        }
-        
-        /* 优化滚动条 */
-        .reward-table-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .reward-table-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .reward-table-container::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 10px;
-        }
-        
-        .reward-table-container::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
+            
+            header {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-heartbeat"></i> 孕期步数激励计划</h1>
-            <p class="subtitle">安全第一，健康相伴 · 步数/时间双模式计算</p>
+            <h1>奶香黄金芝麻小餐包</h1>
+            <p class="subtitle">松软香甜的自发粉小餐包，金黄的外皮裹满芝麻，奶香浓郁，制作简单，适合家庭烘焙新手！</p>
+            
+            <div class="recipe-meta">
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>准备时间: 30分钟</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-temperature-high"></i>
+                    <span>烘烤时间: 18分钟</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-bread-slice"></i>
+                    <span>份量: 12个小餐包</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-fire"></i>
+                    <span>难度: 简单</span>
+                </div>
+            </div>
         </header>
         
-        <!-- 计算器卡片 -->
-        <div class="card calculator">
-            <h2 class="card-title"><i class="fas fa-calculator"></i> 步数/时间计算器</h2>
-            <p style="font-size: 0.95rem; margin-bottom: 15px; color: #666;">输入今日步数或走路时间，自动计算奖励金额</p>
-            
-            <!-- 输入模式切换 -->
-            <div class="input-mode-toggle">
-                <div class="mode-btn active" id="mode-steps">
-                    <i class="fas fa-walking"></i> 按步数计算
-                </div>
-                <div class="mode-btn" id="mode-time">
-                    <i class="fas fa-clock"></i> 按时间计算
-                </div>
-            </div>
-            
-            <!-- 步数输入模式 -->
-            <div class="input-group" id="steps-input-group">
-                <label for="steps">今日步数（步）</label>
-                <input type="number" id="steps" min="0" max="20000" value="0" placeholder="输入步数">
-                <span class="conversion-info">约 100 步 ≈ 1 分钟散步</span>
-            </div>
-            
-            <!-- 时间输入模式 -->
-            <div class="input-group hidden" id="time-input-group">
-                <label for="time">走路时间（分钟）</label>
-                <input type="number" id="time" min="0" max="200" value="0" placeholder="输入分钟数">
-                <span class="conversion-info">约 1 分钟 ≈ 100 步</span>
-            </div>
-            
-            <!-- 快速输入按钮 -->
-            <div class="quick-inputs">
-                <!-- 步数模式按钮 -->
-                <button class="quick-btn steps-mode-btn" data-steps="4000" data-time="40">
-                    4000步<small>努力奖 / 40分钟</small>
-                </button>
-                <button class="quick-btn steps-mode-btn" data-steps="6000" data-time="60">
-                    6000步<small>达标基准 / 60分钟</small>
-                </button>
-                <button class="quick-btn steps-mode-btn" data-steps="8000" data-time="80">
-                    8000步<small>优秀奖 / 80分钟</small>
-                </button>
-                <button class="quick-btn steps-mode-btn" data-steps="10000" data-time="100">
-                    10000步<small>封顶奖 / 100分钟</small>
-                </button>
-                
-                <!-- 时间模式按钮 -->
-                <button class="quick-btn time-mode-btn hidden" data-steps="4000" data-time="40">
-                    40分钟<small>约4000步 / 努力奖</small>
-                </button>
-                <button class="quick-btn time-mode-btn hidden" data-steps="6000" data-time="60">
-                    60分钟<small>约6000步 / 达标基准</small>
-                </button>
-                <button class="quick-btn time-mode-btn hidden" data-steps="8000" data-time="80">
-                    80分钟<small>约8000步 / 优秀奖</small>
-                </button>
-                <button class="quick-btn time-mode-btn hidden" data-steps="10000" data-time="100">
-                    100分钟<small>约10000步 / 封顶奖</small>
-                </button>
-            </div>
-            
-            <div class="checkbox-group">
-                <input type="checkbox" id="discomfort">
-                <label for="discomfort">今天有身体不适（腹痛、出血、胎动异常等）</label>
-            </div>
-            
-            <button class="btn" id="calculate-btn">
-                <i class="fas fa-calculator"></i> 计算今日奖励
-            </button>
-            
-            <div class="result-box" id="result-box">
-                <p class="result-text">今日奖励金额</p>
-                <div class="result-amount" id="result-amount">0 元</div>
-                <p class="result-detail" id="result-detail">请选择模式并输入数值</p>
-                <div id="penalty-notice" class="penalty-notice" style="display: none;"></div>
-            </div>
-            
-            <div class="expert-tip">
-                <i class="fas fa-stethoscope"></i>
-                <div class="expert-tip-content">
-                    <h3>专家建议</h3>
-                    <p>鉴于帆状胎盘，强烈建议将8000步（约80分钟）设为"最佳舒适区"，不要过度诱导冲刺10000步（约100分钟），以免引发宫缩或意外。</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="safety-badge"><i class="fas fa-exclamation-triangle"></i> 核心原则：安全第一，拿钱第二</div>
-            <h2 class="card-title"><i class="fas fa-shield-alt"></i> 安全注意事项</h2>
-            
-            <div class="warning-box">
-                <div class="warning-title"><i class="fas fa-exclamation-circle"></i> 终止信号（立即停止并就医）</div>
-                <p style="font-size: 0.95rem;">任何腹痛、阴道出血、胎动异常、头晕或宫缩情况出现时，请立即停止运动并就医。当天的计划自动视为"满分完成"！</p>
-            </div>
-            
-            <div class="grid">
-                <div>
-                    <h3 style="font-size: 1.1rem; color: #5c4bc4; margin-bottom: 8px;"><i class="fas fa-walking"></i> 运动方式</h3>
-                    <ul style="padding-left: 20px; font-size: 0.95rem;">
-                        <li>跑步机最慢档（散步模式）</li>
-                        <li>必须有人陪同或确保安全锁夹在衣服上</li>
-                        <li>保持水分充足，环境通风</li>
+        <div class="content">
+            <section class="section">
+                <h2><i class="fas fa-utensils"></i> 所需工具</h2>
+                <div class="ingredient-category">
+                    <ul class="ingredient-list">
+                        <li>电子秤</li>
+                        <li>大号搅拌盆</li>
+                        <li>烘焙油纸</li>
+                        <li>烤盘（约28×28cm）</li>
+                        <li>烤箱</li>
+                        <li>刷子</li>
+                        <li>保鲜膜</li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 style="font-size: 1.1rem; color: #5c4bc4; margin-bottom: 8px;"><i class="fas fa-clock"></i> 执行策略</h3>
-                    <ul style="padding-left: 20px; font-size: 0.95rem;">
-                        <li>"分期付款"式走路，分多次完成</li>
-                        <li>注重频率而非单次时长</li>
-                        <li>每次15-20分钟，每日3-4次</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 style="font-size: 1.1rem; color: #5c4bc4; margin-bottom: 8px;"><i class="fas fa-baby"></i> 特殊注意事项</h3>
-                    <ul style="padding-left: 20px; font-size: 0.95rem;">
-                        <li>帆状胎盘需格外注意运动强度</li>
-                        <li>8000步（约80分钟）为"最佳舒适区"</li>
-                        <li>避免冲击10000步（约100分钟），防止宫缩风险</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2 class="card-title"><i class="fas fa-trophy"></i> 分段式奖惩机制</h2>
+            </section>
             
-            <div class="reward-table-container">
-                <table class="reward-table">
-                    <thead>
-                        <tr>
-                            <th>步数/时间</th>
-                            <th>完成状态</th>
-                            <th>奖励金额</th>
-                            <th>备注</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="step-range">0-3,999步<br><small>或 0-39分钟</small></td>
-                            <td>未达标</td>
-                            <td class="reward-amount">0元</td>
-                            <td>需要加油了</td>
-                        </tr>
-                        <tr>
-                            <td class="step-range">4,000-5,999步<br><small>或 40-59分钟</small></td>
-                            <td>努力奖</td>
-                            <td class="reward-amount">20元</td>
-                            <td>有动起来，给辛苦费</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td class="step-range">6,000步<br><small>或 60分钟</small></td>
-                            <td><strong>达标基准线</strong></td>
-                            <td class="reward-amount"><strong>50元</strong></td>
-                            <td><strong>核心目标达成！</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="step-range">6,000-7,999步<br><small>或 60-79分钟</small></td>
-                            <td>进阶奖</td>
-                            <td class="reward-amount">50元+额外每100步1元</td>
-                            <td>例：7000步给60元</td>
-                        </tr>
-                        <tr>
-                            <td class="step-range">8,000-9,999步<br><small>或 80-99分钟</small></td>
-                            <td>优秀奖</td>
-                            <td class="reward-amount">80元</td>
-                            <td>一口价80元</td>
-                        </tr>
-                        <tr>
-                            <td class="step-range">10,000步<br><small>或 100分钟</small></td>
-                            <td>封顶大奖</td>
-                            <td class="reward-amount">100元</td>
-                            <td>强制封顶</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="expert-tip">
-                <i class="fas fa-brain"></i>
-                <div class="expert-tip-content">
-                    <h3>惩罚机制心理学原理</h3>
-                    <p>如果当天无身体不适但步数低于4000步（或时间少于40分钟），需要向"宝宝出生储备金"转账20元。这钱没丢，是给孩子的，她不会太心疼，但会有"我要把这钱赚回来"的动力。</p>
+            <section class="section">
+                <h2><i class="fas fa-shopping-basket"></i> 所需食材</h2>
+                <div class="ingredients-grid">
+                    <div class="ingredient-category">
+                        <h3>主面团</h3>
+                        <ul class="ingredient-list">
+                            <li>
+                                <span class="ingredient-name">自发小麦粉</span>
+                                <span class="ingredient-amount">650克</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">温牛奶（约35°C）</span>
+                                <span class="ingredient-amount">250毫升</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">细砂糖</span>
+                                <span class="ingredient-amount">50克</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">鸡蛋（室温）</span>
+                                <span class="ingredient-amount">1个</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">植物油</span>
+                                <span class="ingredient-amount">25毫升</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">盐</span>
+                                <span class="ingredient-amount">2克</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ingredient-category">
+                        <h3>表面装饰</h3>
+                        <ul class="ingredient-list">
+                            <li>
+                                <span class="ingredient-name">牛奶（刷表面用）</span>
+                                <span class="ingredient-amount">适量</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">全蛋液（1个鸡蛋打散）</span>
+                                <span class="ingredient-amount">适量</span>
+                            </li>
+                            <li>
+                                <span class="ingredient-name">黑芝麻</span>
+                                <span class="ingredient-amount">适量</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ingredient-category">
+                        <h3>馅料（可选）</h3>
+                        <ul class="ingredient-list">
+                            <li>
+                                <span class="ingredient-name">豆沙/奶黄/椰蓉馅</span>
+                                <span class="ingredient-amount">约200克</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
+            
+            <section class="section">
+                <h2><i class="fas fa-list-ol"></i> 详细步骤</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">混合湿料</div>
+                            <div class="step-details">
+                                <p>在搅拌盆中倒入250毫升温牛奶。加入25毫升植物油、1个鸡蛋、50克细砂糖和2克盐。搅拌均匀至糖盐溶解。</p>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-blender"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">加入自发粉</div>
+                            <div class="step-details">
+                                <p>将650克自发小麦粉加入湿料中。搅拌至无干粉，形成粗糙面团。</p>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">揉面</div>
+                            <div class="step-details">
+                                <p>将面团移到操作台，揉8-10分钟至光滑有弹性。判断标准：面团柔软不粘手，能拉出较厚的膜。调整：太粘可加少量油（5毫升内），太干可加几滴牛奶。</p>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-hand-rock"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">分割与整形</div>
+                            <div class="step-details">
+                                <p>将面团分成12等份（每份约75克），揉圆。松弛10分钟后，包入馅料（可选），再次揉圆。收口朝下放在铺有油纸的烤盘上，间隔3厘米。</p>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">醒发</div>
+                            <div class="step-details">
+                                <p>烤盘放入烤箱，旁边放一碗热水。关闭烤箱门，醒发60-70分钟至1.5倍大。判断标准：轻按表面缓慢回弹。</p>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">烘烤（总时间18分钟）</div>
+                            <div class="step-details">
+                                <div class="baking-steps">
+                                    <div class="baking-step"><span class="time-highlight">预热</span>烤箱：上火175°C/下火165°C（家用烤箱170°C）。</div>
+                                    <div class="baking-step"><span class="time-highlight">第一次刷牛奶</span>：在醒发好的面团表面刷一层薄牛奶。</div>
+                                    <div class="baking-step"><span class="time-highlight">放入烤箱</span>，设置13分钟计时。</div>
+                                    <div class="baking-step"><span class="time-highlight">烤3分钟后</span>：取出快速刷第二次牛奶，放回烤箱继续烤。</div>
+                                    <div class="baking-step"><span class="time-highlight">烤13分钟结束</span>：取出，刷全蛋液，撒黑芝麻（可选）。</div>
+                                    <div class="baking-step"><span class="time-highlight">调整温度</span>：烤箱调至上火160°C/下火145°C（或整体150°C）。</div>
+                                    <div class="baking-step"><span class="time-highlight">继续烤5分钟</span>：放回烤箱烤5分钟，总时间18分钟。</div>
+                                    <div class="baking-step"><span class="time-highlight">判断熟度</span>：表面金黄，牙签插入中心无粘连。</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-oven"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-title">冷却与保存</div>
+                            <div class="step-details">
+                                <p>立即将面包移至烤网，完全冷却后密封保存。室温可保存2-3天，冷冻可保存1个月。</p>
+                            </div>
+                        </div>
+                        <div class="step-image">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2><i class="fas fa-lightbulb"></i> 成功秘诀与小贴士</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <i class="fas fa-clock"></i>
+                            <h3>时间把控</h3>
+                        </div>
+                        <p>使用计时器，严格按照3分钟、13分钟的时间节点操作。刷牛奶和蛋液时动作要快，每次操作控制在30秒内，避免烤箱降温过多。</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <i class="fas fa-thermometer-half"></i>
+                            <h3>温度调整</h3>
+                        </div>
+                        <p>若烤箱不能独立控温，全程170°C烤13分钟，刷蛋液后150°C烤5分钟。最后5分钟注意观察，避免上色过深。</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <i class="fas fa-seedling"></i>
+                            <h3>自发粉特性</h3>
+                        </div>
+                        <p>自发粉已含膨松剂，不需再加酵母，开封后需密封防潮。使用自发粉揉面时间可稍短，无需追求"手套膜"，光滑有弹性即可。</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <i class="fas fa-cloud-sun"></i>
+                            <h3>醒发控制</h3>
+                        </div>
+                        <p>冬天可延长醒发至90分钟，夏天可能只需50分钟，主要看状态而非死守时间。发酵至1.5倍大，轻按缓慢回弹即可。</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <i class="fas fa-cookie-bite"></i>
+                            <h3>无馅版本</h3>
+                        </div>
+                        <p>可不包馅，在分割后直接揉圆，或在面团中加入葡萄干、蔓越莓等果干增加风味。</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <i class="fas fa-snowflake"></i>
+                            <h3>复热方法</h3>
+                        </div>
+                        <p>冷冻面包取出后，表面喷水，150°C烤5-8分钟即可恢复松软口感。</p>
+                    </div>
+                </div>
+            </section>
         </div>
         
         <footer>
-            <p style="margin-bottom: 8px;">本计划专为孕期健康设计，特别考虑帆状胎盘情况。所有运动前请咨询医生。</p>
-            <p>祝您和宝宝健康平安 <span class="heart">❤</span></p>
-            <p style="margin-top: 15px; font-size: 0.8rem;">© 2023 孕期健康激励计划</p>
+            <p>© 2023 个人菜谱博客 | 奶香黄金芝麻小餐包配方</p>
+            <p>温馨提示：菜谱中的图片位置为占位符，您可以在相应位置添加自己的步骤图片</p>
         </footer>
     </div>
-
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 获取DOM元素
-            const stepsInput = document.getElementById('steps');
-            const timeInput = document.getElementById('time');
-            const discomfortCheckbox = document.getElementById('discomfort');
-            const calculateBtn = document.getElementById('calculate-btn');
-            const resultBox = document.getElementById('result-box');
-            const resultAmount = document.getElementById('result-amount');
-            const resultDetail = document.getElementById('result-detail');
-            const penaltyNotice = document.getElementById('penalty-notice');
-            
-            // 模式切换相关元素
-            const modeStepsBtn = document.getElementById('mode-steps');
-            const modeTimeBtn = document.getElementById('mode-time');
-            const stepsInputGroup = document.getElementById('steps-input-group');
-            const timeInputGroup = document.getElementById('time-input-group');
-            
-            // 快速按钮
-            const stepsModeBtns = document.querySelectorAll('.steps-mode-btn');
-            const timeModeBtns = document.querySelectorAll('.time-mode-btn');
-            
-            // 当前模式：'steps' 或 'time'
-            let currentMode = 'steps';
-            
-            // 切换输入模式
-            modeStepsBtn.addEventListener('click', function() {
-                if (currentMode === 'time') {
-                    currentMode = 'steps';
-                    modeStepsBtn.classList.add('active');
-                    modeTimeBtn.classList.remove('active');
-                    stepsInputGroup.classList.remove('hidden');
-                    timeInputGroup.classList.add('hidden');
-                    
-                    // 切换快速按钮显示
-                    stepsModeBtns.forEach(btn => btn.classList.remove('hidden'));
-                    timeModeBtns.forEach(btn => btn.classList.add('hidden'));
-                    
-                    // 自动计算当前步数对应的结果
-                    const steps = parseInt(stepsInput.value) || 0;
-                    updateResult(steps);
-                }
-            });
-            
-            modeTimeBtn.addEventListener('click', function() {
-                if (currentMode === 'steps') {
-                    currentMode = 'time';
-                    modeTimeBtn.classList.add('active');
-                    modeStepsBtn.classList.remove('active');
-                    timeInputGroup.classList.remove('hidden');
-                    stepsInputGroup.classList.add('hidden');
-                    
-                    // 切换快速按钮显示
-                    timeModeBtns.forEach(btn => btn.classList.remove('hidden'));
-                    stepsModeBtns.forEach(btn => btn.classList.add('hidden'));
-                    
-                    // 自动计算当前时间对应的结果
-                    const time = parseInt(timeInput.value) || 0;
-                    const steps = time * 100; // 转换为步数
-                    updateResult(steps);
-                }
-            });
-            
-            // 快速按钮点击事件
-            stepsModeBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const steps = parseInt(this.getAttribute('data-steps'));
-                    stepsInput.value = steps;
-                    updateResult(steps);
-                    
-                    // 震动反馈（如果设备支持）
-                    if (navigator.vibrate) {
-                        navigator.vibrate(20);
-                    }
-                });
-            });
-            
-            timeModeBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const time = parseInt(this.getAttribute('data-time'));
-                    timeInput.value = time;
-                    const steps = time * 100;
-                    updateResult(steps);
-                    
-                    // 震动反馈（如果设备支持）
-                    if (navigator.vibrate) {
-                        navigator.vibrate(20);
-                    }
-                });
-            });
-            
-            // 奖励计算函数
-            function calculateReward(steps) {
-                let reward = 0;
-                let detail = "";
-                let penaltyText = "";
-                
-                // 如果勾选了身体不适
-                if (discomfortCheckbox.checked) {
-                    reward = 50; // 视为满分完成
-                    detail = "因身体不适，今日计划自动视为'满分完成'！安全第一，请务必休息并遵循医生建议。";
-                    penaltyText = "";
-                    return {reward, detail, penaltyText};
-                }
-                
-                // 根据步数计算奖励
-                if (steps < 4000) {
-                    reward = 0;
-                    detail = "今日步数未达标。为了宝宝健康，请明天继续努力！";
-                    penaltyText = "请向'宝宝出生储备金'转账20元（无身体不适情况下）";
-                } else if (steps >= 4000 && steps < 6000) {
-                    reward = 20;
-                    detail = "获得努力奖！虽然没达到6000步目标，但有动起来就值得鼓励！";
-                    penaltyText = "";
-                } else if (steps === 6000) {
-                    reward = 50;
-                    detail = "恭喜！达成核心目标6000步，获得达标基准奖励！";
-                    penaltyText = "";
-                } else if (steps > 6000 && steps < 8000) {
-                    const extraSteps = steps - 6000;
-                    const extraReward = Math.floor(extraSteps / 100);
-                    reward = 50 + extraReward;
-                    detail = `达标6000步奖励50元 + ${extraSteps}步额外奖励${extraReward}元（每100步1元）`;
-                    penaltyText = "";
-                } else if (steps >= 8000 && steps < 10000) {
-                    reward = 80;
-                    detail = "优秀！达到8000步最佳舒适区，获得优秀奖！";
-                    penaltyText = "";
-                } else if (steps >= 10000) {
-                    reward = 100;
-                    detail = "封顶大奖！已达到10000步上限，请勿继续增加步数。";
-                    penaltyText = "";
-                }
-                
-                // 帆状胎盘特别提醒
-                if (steps > 8000) {
-                    detail += " 专家提醒：帆状胎盘建议以8000步为舒适区上限，请勿过度运动。";
-                }
-                
-                return {reward, detail, penaltyText};
-            }
-            
-            // 计算按钮点击事件
-            calculateBtn.addEventListener('click', function() {
-                let steps = 0;
-                
-                if (currentMode === 'steps') {
-                    steps = parseInt(stepsInput.value) || 0;
-                } else {
-                    const time = parseInt(timeInput.value) || 0;
-                    steps = time * 100; // 时间转换为步数
-                }
-                
-                updateResult(steps);
-                
-                // 震动反馈（如果设备支持）
-                if (navigator.vibrate) {
-                    navigator.vibrate(30);
-                }
-            });
-            
-            // 更新结果函数
-            function updateResult(steps) {
-                // 验证步数范围
-                if (steps < 0) {
-                    showToast("数值不能为负数");
-                    return;
-                }
-                
-                if (steps > 20000) {
-                    showToast("步数过高，请确认输入正确");
-                    return;
-                }
-                
-                // 计算结果
-                const result = calculateReward(steps);
-                
-                // 更新结果显示
-                resultAmount.textContent = result.reward + " 元";
-                
-                // 根据当前模式调整显示详情
-                let modeDetail = "";
-                if (currentMode === 'steps') {
-                    modeDetail = `今日步数：${steps}步`;
-                } else {
-                    const time = Math.round(steps / 100);
-                    modeDetail = `今日走路：${time}分钟（约${steps}步）`;
-                }
-                
-                resultDetail.textContent = `${modeDetail} · ${result.detail}`;
-                
-                if (result.penaltyText) {
-                    penaltyNotice.textContent = result.penaltyText;
-                    penaltyNotice.style.display = "block";
-                } else {
-                    penaltyNotice.style.display = "none";
-                }
-                
-                // 激活结果框
-                resultBox.classList.add('active');
-                
-                // 根据奖励金额设置不同颜色
-                if (result.reward === 0) {
-                    resultAmount.style.color = "#ff6b6b";
-                } else if (result.reward < 50) {
-                    resultAmount.style.color = "#ff9800";
-                } else {
-                    resultAmount.style.color = "#5c4bc4";
-                }
-                
-                // 自动滚动到结果区域（如果结果不在视图中）
-                if (!isElementInViewport(resultBox)) {
-                    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-            }
-            
-            // 检查元素是否在视口中
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-            
-            // 显示Toast消息
-            function showToast(message) {
-                // 如果已有toast，先移除
-                const existingToast = document.querySelector('.toast-message');
-                if (existingToast) {
-                    existingToast.remove();
-                }
-                
-                const toast = document.createElement('div');
-                toast.className = 'toast-message';
-                toast.textContent = message;
-                toast.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background: rgba(0,0,0,0.8);
-                    color: white;
-                    padding: 12px 20px;
-                    border-radius: 8px;
-                    z-index: 1000;
-                    font-size: 0.95rem;
-                    max-width: 90%;
-                    text-align: center;
-                    animation: fadeInOut 3s ease;
-                `;
-                
-                document.body.appendChild(toast);
-                
-                // 3秒后移除
-                setTimeout(() => {
-                    toast.remove();
-                }, 3000);
-            }
-            
-            // 添加CSS动画
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeInOut {
-                    0% { opacity: 0; top: 10px; }
-                    10% { opacity: 1; top: 20px; }
-                    90% { opacity: 1; top: 20px; }
-                    100% { opacity: 0; top: 10px; }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // 身体不适复选框变化事件
-            discomfortCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    // 如果勾选了身体不适，将输入值设置为0并禁用输入
-                    stepsInput.value = "0";
-                    timeInput.value = "0";
-                    stepsInput.disabled = true;
-                    timeInput.disabled = true;
-                    stepsInput.style.backgroundColor = "#f5f5f5";
-                    timeInput.style.backgroundColor = "#f5f5f5";
-                    
-                    // 自动计算并显示结果
-                    updateResult(0);
-                } else {
-                    // 取消勾选则恢复输入
-                    stepsInput.disabled = false;
-                    timeInput.disabled = false;
-                    stepsInput.style.backgroundColor = "white";
-                    timeInput.style.backgroundColor = "white";
-                    
-                    // 根据当前模式重新计算
-                    if (currentMode === 'steps') {
-                        const steps = parseInt(stepsInput.value) || 0;
-                        updateResult(steps);
-                    } else {
-                        const time = parseInt(timeInput.value) || 0;
-                        const steps = time * 100;
-                        updateResult(steps);
-                    }
-                }
-            });
-            
-            // 输入框变化事件，自动更新结果
-            stepsInput.addEventListener('input', function() {
-                if (currentMode === 'steps' && !discomfortCheckbox.checked) {
-                    const steps = parseInt(this.value) || 0;
-                    updateResult(steps);
-                }
-            });
-            
-            timeInput.addEventListener('input', function() {
-                if (currentMode === 'time' && !discomfortCheckbox.checked) {
-                    const time = parseInt(this.value) || 0;
-                    const steps = time * 100;
-                    updateResult(steps);
-                }
-            });
-            
-            // 初始化：如果步数输入框为空，设置为0
-            if (!stepsInput.value) {
-                stepsInput.value = "0";
-            }
-            
-            // 防止键盘弹出时页面内容被推上去
-            window.addEventListener('resize', function() {
-                if (document.activeElement.tagName === 'INPUT') {
-                    document.activeElement.scrollIntoView({ block: 'center' });
-                }
+        // 简单的交互：点击步骤图片时显示提示
+        document.querySelectorAll('.step-image').forEach(image => {
+            image.addEventListener('click', function() {
+                const stepNumber = this.closest('.step').querySelector('.step-number').textContent;
+                alert(`这是第${stepNumber}步的图片位置，您可以在这里添加自己的步骤图片！`);
             });
         });
+        
+        // 当前年份更新
+        document.querySelector('footer p:first-child').innerHTML = `© ${new Date().getFullYear()} 个人菜谱博客 | 奶香黄金芝麻小餐包配方`;
     </script>
 </body>
 </html>
